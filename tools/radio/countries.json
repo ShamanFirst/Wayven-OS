@@ -1,0 +1,1297 @@
+{
+"AC": {
+"continent": "AF",
+"en": "Ascension",
+"pl": "Ascension"
+},
+"AD": {
+"continent": "EU",
+"en": "Andorra",
+"pl": "Andora"
+},
+"AE": {
+"continent": "AS",
+"en": "United Arab Emirates",
+"pl": "Zjednoczone Emiraty Arabskie"
+},
+"AF": {
+"continent": "AS",
+"en": "Afghanistan",
+"pl": "Afganistan"
+},
+"AG": {
+"continent": "NA",
+"en": "Antigua and Barbuda",
+"pl": "Antigua i Barbuda"
+},
+"AI": {
+"continent": "NA",
+"en": "Anguilla",
+"pl": "Anguilla"
+},
+"AL": {
+"continent": "EU",
+"en": "Albania",
+"pl": "Albania"
+},
+"AM": {
+"continent": "AS",
+"en": "Armenia",
+"pl": "Armenia"
+},
+"AN": {
+"continent": "NA",
+"en": "Netherlands Antilles",
+"pl": "Antyle Holenderskie"
+},
+"AO": {
+"continent": "AF",
+"en": "Angola",
+"pl": "Angola"
+},
+"AQ": {
+"continent": "AN",
+"en": "Antarctica",
+"pl": "Antarktyda"
+},
+"AR": {
+"continent": "SA",
+"en": "Argentina",
+"pl": "Argentyna"
+},
+"AS": {
+"continent": "OC",
+"en": "American Samoa",
+"pl": "Samoa Amerykańskie"
+},
+"AT": {
+"continent": "EU",
+"en": "Austria",
+"pl": "Austria"
+},
+"AU": {
+"continent": "OC",
+"en": "Australia",
+"pl": "Australia"
+},
+"AW": {
+"continent": "NA",
+"en": "Aruba",
+"pl": "Aruba"
+},
+"AX": {
+"continent": "EU",
+"en": "Åland",
+"pl": "Wyspy Alandzkie"
+},
+"AZ": {
+"continent": "AS",
+"en": "Azerbaijan",
+"pl": "Azerbejdżan"
+},
+"BA": {
+"continent": "EU",
+"en": "Bosnia and Herzegovina",
+"pl": "Bośnia i Hercegowina"
+},
+"BB": {
+"continent": "NA",
+"en": "Barbados",
+"pl": "Barbados"
+},
+"BD": {
+"continent": "AS",
+"en": "Bangladesh",
+"pl": "Bangladesz"
+},
+"BE": {
+"continent": "EU",
+"en": "Belgium",
+"pl": "Belgia"
+},
+"BF": {
+"continent": "AF",
+"en": "Burkina Faso",
+"pl": "Burkina Faso"
+},
+"BG": {
+"continent": "EU",
+"en": "Bulgaria",
+"pl": "Bułgaria"
+},
+"BH": {
+"continent": "AS",
+"en": "Bahrain",
+"pl": "Bahrajn"
+},
+"BI": {
+"continent": "AF",
+"en": "Burundi",
+"pl": "Burundi"
+},
+"BJ": {
+"continent": "AF",
+"en": "Benin",
+"pl": "Benin"
+},
+"BL": {
+"continent": "NA",
+"en": "Saint Barthélemy",
+"pl": "Saint-Barthélemy"
+},
+"BM": {
+"continent": "NA",
+"en": "Bermuda",
+"pl": "Bermudy"
+},
+"BN": {
+"continent": "AS",
+"en": "Brunei",
+"pl": "Brunei"
+},
+"BO": {
+"continent": "SA",
+"en": "Bolivia",
+"pl": "Boliwia"
+},
+"BQ": {
+"continent": "NA",
+"en": "Caribbean Netherlands",
+"pl": "Niderlandy Karaibskie"
+},
+"BR": {
+"continent": "SA",
+"en": "Brazil",
+"pl": "Brazylia"
+},
+"BS": {
+"continent": "NA",
+"en": "The Bahamas",
+"pl": "Bahamy"
+},
+"BT": {
+"continent": "AS",
+"en": "Bhutan",
+"pl": "Bhutan"
+},
+"BV": {
+"continent": "AN",
+"en": "Bouvet Island",
+"pl": "Wyspa Bouveta"
+},
+"BW": {
+"continent": "AF",
+"en": "Botswana",
+"pl": "Botswana"
+},
+"BY": {
+"continent": "EU",
+"en": "Belarus",
+"pl": "Białoruś"
+},
+"BZ": {
+"continent": "NA",
+"en": "Belize",
+"pl": "Belize"
+},
+"CA": {
+"continent": "NA",
+"en": "Canada",
+"pl": "Kanada"
+},
+"CC": {
+"continent": "OC",
+"en": "Cocos (Keeling) Islands",
+"pl": "Wyspy Kokosowe"
+},
+"CD": {
+"continent": "AF",
+"en": "Democratic Republic of the Congo",
+"pl": "Demokratyczna Republika Konga"
+},
+"CF": {
+"continent": "AF",
+"en": "Central African Republic",
+"pl": "Republika Środkowoafrykańska"
+},
+"CG": {
+"continent": "AF",
+"en": "Republic of the Congo",
+"pl": "Kongo"
+},
+"CH": {
+"continent": "EU",
+"en": "Switzerland",
+"pl": "Szwajcaria"
+},
+"CI": {
+"continent": "AF",
+"en": "Ivory Coast",
+"pl": "Wybrzeże Kości Słoniowej"
+},
+"CK": {
+"continent": "OC",
+"en": "Cook Islands",
+"pl": "Wyspy Cooka"
+},
+"CL": {
+"continent": "SA",
+"en": "Chile",
+"pl": "Chile"
+},
+"CM": {
+"continent": "AF",
+"en": "Cameroon",
+"pl": "Kamerun"
+},
+"CN": {
+"continent": "AS",
+"en": "People's Republic of China",
+"pl": "Chińska Republika Ludowa"
+},
+"CO": {
+"continent": "SA",
+"en": "Colombia",
+"pl": "Kolumbia"
+},
+"CP": {
+"continent": "NA",
+"en": "Clipperton Island",
+"pl": "Wyspa Clippertona"
+},
+"CQ": {
+"continent": "EU",
+"en": "Sark",
+"pl": "Sark"
+},
+"CR": {
+"continent": "NA",
+"en": "Costa Rica",
+"pl": "Kostaryka"
+},
+"CU": {
+"continent": "NA",
+"en": "Cuba",
+"pl": "Kuba"
+},
+"CV": {
+"continent": "AF",
+"en": "Cape Verde",
+"pl": "Republika Zielonego Przylądka"
+},
+"CW": {
+"continent": "NA",
+"en": "Curaçao",
+"pl": "Curaçao"
+},
+"CX": {
+"continent": "AS",
+"en": "Christmas Island",
+"pl": "Wyspa Bożego Narodzenia"
+},
+"CY": {
+"continent": "EU",
+"en": "Cyprus",
+"pl": "Cypr"
+},
+"CZ": {
+"continent": "EU",
+"en": "Czech Republic",
+"pl": "Czechy"
+},
+"DD": {
+"continent": "EU",
+"en": "East Germany",
+"pl": "Niemiecka Republika Demokratyczna"
+},
+"DE": {
+"continent": "EU",
+"en": "Germany",
+"pl": "Niemcy"
+},
+"DG": {
+"continent": "AF",
+"en": "Diego Garcia",
+"pl": "Diego Garcia"
+},
+"DJ": {
+"continent": "AF",
+"en": "Djibouti",
+"pl": "Dżibuti"
+},
+"DK": {
+"continent": "EU",
+"en": "Denmark",
+"pl": "Dania"
+},
+"DM": {
+"continent": "NA",
+"en": "Dominica",
+"pl": "Dominika"
+},
+"DO": {
+"continent": "NA",
+"en": "Dominican Republic",
+"pl": "Dominikana"
+},
+"DZ": {
+"continent": "AF",
+"en": "Algeria",
+"pl": "Algieria"
+},
+"EC": {
+"continent": "SA",
+"en": "Ecuador",
+"pl": "Ekwador"
+},
+"EE": {
+"continent": "EU",
+"en": "Estonia",
+"pl": "Estonia"
+},
+"EG": {
+"continent": "AF",
+"en": "Egypt",
+"pl": "Egipt"
+},
+"EH": {
+"continent": "AF",
+"en": "Western Sahara",
+"pl": "Sahara Zachodnia"
+},
+"ER": {
+"continent": "AF",
+"en": "Eritrea",
+"pl": "Erytrea"
+},
+"ES": {
+"continent": "EU",
+"en": "Spain",
+"pl": "Hiszpania"
+},
+"ET": {
+"continent": "AF",
+"en": "Ethiopia",
+"pl": "Etiopia"
+},
+"FI": {
+"continent": "EU",
+"en": "Finland",
+"pl": "Finlandia"
+},
+"FJ": {
+"continent": "OC",
+"en": "Fiji",
+"pl": "Fidżi"
+},
+"FK": {
+"continent": "SA",
+"en": "Falkland Islands",
+"pl": "Falklandy"
+},
+"FM": {
+"continent": "OC",
+"en": "Federated States of Micronesia",
+"pl": "Mikronezja"
+},
+"FO": {
+"continent": "EU",
+"en": "Faroe Islands",
+"pl": "Wyspy Owcze"
+},
+"FR": {
+"continent": "EU",
+"en": "France",
+"pl": "Francja"
+},
+"GA": {
+"continent": "AF",
+"en": "Gabon",
+"pl": "Gabon"
+},
+"GB": {
+"continent": "EU",
+"en": "United Kingdom",
+"pl": "Wielka Brytania"
+},
+"GD": {
+"continent": "NA",
+"en": "Grenada",
+"pl": "Grenada"
+},
+"GE": {
+"continent": "EU",
+"en": "Georgia",
+"pl": "Gruzja"
+},
+"GF": {
+"continent": "SA",
+"en": "French Guiana",
+"pl": "Gujana Francuska"
+},
+"GG": {
+"continent": "EU",
+"en": "Guernsey",
+"pl": "Guernsey"
+},
+"GH": {
+"continent": "AF",
+"en": "Ghana",
+"pl": "Ghana"
+},
+"GI": {
+"continent": "EU",
+"en": "Gibraltar",
+"pl": "Gibraltar"
+},
+"GL": {
+"continent": "NA",
+"en": "Greenland",
+"pl": "Grenlandia"
+},
+"GM": {
+"continent": "AF",
+"en": "The Gambia",
+"pl": "Gambia"
+},
+"GN": {
+"continent": "AF",
+"en": "Guinea",
+"pl": "Gwinea"
+},
+"GP": {
+"continent": "NA",
+"en": "Guadeloupe",
+"pl": "Gwadelupa"
+},
+"GQ": {
+"continent": "AF",
+"en": "Equatorial Guinea",
+"pl": "Gwinea Równikowa"
+},
+"GR": {
+"continent": "EU",
+"en": "Greece",
+"pl": "Grecja"
+},
+"GS": {
+"continent": "SA",
+"en": "South Georgia and the South Sandwich Islands",
+"pl": "Georgia Południowa i Sandwich Południowy"
+},
+"GT": {
+"continent": "NA",
+"en": "Guatemala",
+"pl": "Gwatemala"
+},
+"GU": {
+"continent": "OC",
+"en": "Guam",
+"pl": "Guam"
+},
+"GW": {
+"continent": "AF",
+"en": "Guinea-Bissau",
+"pl": "Gwinea Bissau"
+},
+"GY": {
+"continent": "SA",
+"en": "Guyana",
+"pl": "Gujana"
+},
+"HK": {
+"continent": "AS",
+"en": "Hong Kong",
+"pl": "Hongkong"
+},
+"HM": {
+"continent": "AN",
+"en": "Heard Island and McDonald Islands",
+"pl": "Wyspy Heard i McDonalda"
+},
+"HN": {
+"continent": "NA",
+"en": "Honduras",
+"pl": "Honduras"
+},
+"HR": {
+"continent": "EU",
+"en": "Croatia",
+"pl": "Chorwacja"
+},
+"HT": {
+"continent": "NA",
+"en": "Haiti",
+"pl": "Haiti"
+},
+"HU": {
+"continent": "EU",
+"en": "Hungary",
+"pl": "Węgry"
+},
+"ID": {
+"continent": "AS",
+"en": "Indonesia",
+"pl": "Indonezja"
+},
+"IE": {
+"continent": "EU",
+"en": "Ireland",
+"pl": "Irlandia"
+},
+"IL": {
+"continent": "AS",
+"en": "Israel",
+"pl": "Izrael"
+},
+"IM": {
+"continent": "EU",
+"en": "Isle of Man",
+"pl": "Wyspa Man"
+},
+"IN": {
+"continent": "AS",
+"en": "India",
+"pl": "Indie"
+},
+"IO": {
+"continent": "AF",
+"en": "British Indian Ocean Territory",
+"pl": "Brytyjskie Terytorium Oceanu Indyjskiego"
+},
+"IQ": {
+"continent": "AS",
+"en": "Iraq",
+"pl": "Irak"
+},
+"IR": {
+"continent": "AS",
+"en": "Iran",
+"pl": "Iran"
+},
+"IS": {
+"continent": "EU",
+"en": "Iceland",
+"pl": "Islandia"
+},
+"IT": {
+"continent": "EU",
+"en": "Italy",
+"pl": "Włochy"
+},
+"JE": {
+"continent": "EU",
+"en": "Jersey",
+"pl": "Jersey"
+},
+"JM": {
+"continent": "NA",
+"en": "Jamaica",
+"pl": "Jamajka"
+},
+"JO": {
+"continent": "AS",
+"en": "Jordan",
+"pl": "Jordania"
+},
+"JP": {
+"continent": "AS",
+"en": "Japan",
+"pl": "Japonia"
+},
+"KE": {
+"continent": "AF",
+"en": "Kenya",
+"pl": "Kenia"
+},
+"KG": {
+"continent": "AS",
+"en": "Kyrgyzstan",
+"pl": "Kirgistan"
+},
+"KH": {
+"continent": "AS",
+"en": "Cambodia",
+"pl": "Kambodża"
+},
+"KI": {
+"continent": "OC",
+"en": "Kiribati",
+"pl": "Kiribati"
+},
+"KM": {
+"continent": "AF",
+"en": "Comoros",
+"pl": "Komory"
+},
+"KN": {
+"continent": "NA",
+"en": "Saint Kitts and Nevis",
+"pl": "Saint Kitts i Nevis"
+},
+"KP": {
+"continent": "AS",
+"en": "North Korea",
+"pl": "Korea Północna"
+},
+"KR": {
+"continent": "AS",
+"en": "South Korea",
+"pl": "Korea Południowa"
+},
+"KW": {
+"continent": "AS",
+"en": "Kuwait",
+"pl": "Kuwejt"
+},
+"KY": {
+"continent": "NA",
+"en": "Cayman Islands",
+"pl": "Kajmany"
+},
+"KZ": {
+"continent": "EU",
+"en": "Kazakhstan",
+"pl": "Kazachstan"
+},
+"LA": {
+"continent": "AS",
+"en": "Laos",
+"pl": "Laos"
+},
+"LB": {
+"continent": "AS",
+"en": "Lebanon",
+"pl": "Liban"
+},
+"LC": {
+"continent": "NA",
+"en": "Saint Lucia",
+"pl": "Saint Lucia"
+},
+"LI": {
+"continent": "EU",
+"en": "Liechtenstein",
+"pl": "Liechtenstein"
+},
+"LK": {
+"continent": "AS",
+"en": "Sri Lanka",
+"pl": "Sri Lanka"
+},
+"LR": {
+"continent": "AF",
+"en": "Liberia",
+"pl": "Liberia"
+},
+"LS": {
+"continent": "AF",
+"en": "Lesotho",
+"pl": "Lesotho"
+},
+"LT": {
+"continent": "EU",
+"en": "Lithuania",
+"pl": "Litwa"
+},
+"LU": {
+"continent": "EU",
+"en": "Luxembourg",
+"pl": "Luksemburg"
+},
+"LV": {
+"continent": "EU",
+"en": "Latvia",
+"pl": "Łotwa"
+},
+"LY": {
+"continent": "AF",
+"en": "Libya",
+"pl": "Libia"
+},
+"MA": {
+"continent": "AF",
+"en": "Morocco",
+"pl": "Maroko"
+},
+"MC": {
+"continent": "EU",
+"en": "Monaco",
+"pl": "Monako"
+},
+"MD": {
+"continent": "EU",
+"en": "Moldova",
+"pl": "Mołdawia"
+},
+"ME": {
+"continent": "EU",
+"en": "Montenegro",
+"pl": "Czarnogóra"
+},
+"MF": {
+"continent": "NA",
+"en": "Saint-Martin",
+"pl": "Saint-Martin"
+},
+"MG": {
+"continent": "AF",
+"en": "Madagascar",
+"pl": "Madagaskar"
+},
+"MH": {
+"continent": "OC",
+"en": "Marshall Islands",
+"pl": "Wyspy Marshalla"
+},
+"MK": {
+"continent": "EU",
+"en": "North Macedonia",
+"pl": "Macedonia Północna"
+},
+"ML": {
+"continent": "AF",
+"en": "Mali",
+"pl": "Mali"
+},
+"MM": {
+"continent": "AS",
+"en": "Myanmar",
+"pl": "Mjanma"
+},
+"MN": {
+"continent": "AS",
+"en": "Mongolia",
+"pl": "Mongolia"
+},
+"MO": {
+"continent": "AS",
+"en": "Macau",
+"pl": "Makau"
+},
+"MP": {
+"continent": "OC",
+"en": "Northern Mariana Islands",
+"pl": "Mariany Północne"
+},
+"MQ": {
+"continent": "NA",
+"en": "Martinique",
+"pl": "Martynika"
+},
+"MR": {
+"continent": "AF",
+"en": "Mauritania",
+"pl": "Mauretania"
+},
+"MS": {
+"continent": "NA",
+"en": "Montserrat",
+"pl": "Montserrat"
+},
+"MT": {
+"continent": "EU",
+"en": "Malta",
+"pl": "Malta"
+},
+"MU": {
+"continent": "AF",
+"en": "Mauritius",
+"pl": "Mauritius"
+},
+"MV": {
+"continent": "AS",
+"en": "Maldives",
+"pl": "Malediwy"
+},
+"MW": {
+"continent": "AF",
+"en": "Malawi",
+"pl": "Malawi"
+},
+"MX": {
+"continent": "NA",
+"en": "Mexico",
+"pl": "Meksyk"
+},
+"MY": {
+"continent": "AS",
+"en": "Malaysia",
+"pl": "Malezja"
+},
+"MZ": {
+"continent": "AF",
+"en": "Mozambique",
+"pl": "Mozambik"
+},
+"NA": {
+"continent": "AF",
+"en": "Namibia",
+"pl": "Namibia"
+},
+"NC": {
+"continent": "OC",
+"en": "New Caledonia",
+"pl": "Nowa Kaledonia"
+},
+"NE": {
+"continent": "AF",
+"en": "Niger",
+"pl": "Niger"
+},
+"NF": {
+"continent": "OC",
+"en": "Norfolk Island",
+"pl": "Norfolk"
+},
+"NG": {
+"continent": "AF",
+"en": "Nigeria",
+"pl": "Nigeria"
+},
+"NI": {
+"continent": "NA",
+"en": "Nicaragua",
+"pl": "Nikaragua"
+},
+"NL": {
+"continent": "EU",
+"en": "Netherlands",
+"pl": "Holandia"
+},
+"NO": {
+"continent": "EU",
+"en": "Norway",
+"pl": "Norwegia"
+},
+"NP": {
+"continent": "AS",
+"en": "Nepal",
+"pl": "Nepal"
+},
+"NR": {
+"continent": "OC",
+"en": "Nauru",
+"pl": "Naoero"
+},
+"NU": {
+"continent": "OC",
+"en": "Niue",
+"pl": "Niue"
+},
+"NZ": {
+"continent": "OC",
+"en": "New Zealand",
+"pl": "Nowa Zelandia"
+},
+"OM": {
+"continent": "AS",
+"en": "Oman",
+"pl": "Oman"
+},
+"PA": {
+"continent": "NA",
+"en": "Panama",
+"pl": "Panama"
+},
+"PE": {
+"continent": "SA",
+"en": "Peru",
+"pl": "Peru"
+},
+"PF": {
+"continent": "OC",
+"en": "French Polynesia",
+"pl": "Polinezja Francuska"
+},
+"PG": {
+"continent": "OC",
+"en": "Papua New Guinea",
+"pl": "Papua-Nowa Gwinea"
+},
+"PH": {
+"continent": "AS",
+"en": "Philippines",
+"pl": "Filipiny"
+},
+"PK": {
+"continent": "AS",
+"en": "Pakistan",
+"pl": "Pakistan"
+},
+"PL": {
+"continent": "EU",
+"en": "Poland",
+"pl": "Polska"
+},
+"PM": {
+"continent": "NA",
+"en": "Saint Pierre and Miquelon",
+"pl": "Saint-Pierre i Miquelon"
+},
+"PN": {
+"continent": "OC",
+"en": "Pitcairn Islands",
+"pl": "Pitcairn"
+},
+"PR": {
+"continent": "NA",
+"en": "Puerto Rico",
+"pl": "Portoryko"
+},
+"PS": {
+"continent": "AS",
+"en": "Palestine",
+"pl": "Państwo Palestyna"
+},
+"PT": {
+"continent": "EU",
+"en": "Portugal",
+"pl": "Portugalia"
+},
+"PW": {
+"continent": "OC",
+"en": "Palau",
+"pl": "Palau"
+},
+"PY": {
+"continent": "SA",
+"en": "Paraguay",
+"pl": "Paragwaj"
+},
+"QA": {
+"continent": "AS",
+"en": "Qatar",
+"pl": "Katar"
+},
+"RE": {
+"continent": "AF",
+"en": "Réunion",
+"pl": "Reunion"
+},
+"RO": {
+"continent": "EU",
+"en": "Romania",
+"pl": "Rumunia"
+},
+"RS": {
+"continent": "EU",
+"en": "Serbia",
+"pl": "Serbia"
+},
+"RU": {
+"continent": "EU",
+"en": "Russia",
+"pl": "Rosja"
+},
+"RW": {
+"continent": "AF",
+"en": "Rwanda",
+"pl": "Rwanda"
+},
+"SA": {
+"continent": "AS",
+"en": "Saudi Arabia",
+"pl": "Arabia Saudyjska"
+},
+"SB": {
+"continent": "OC",
+"en": "Solomon Islands",
+"pl": "Wyspy Salomona"
+},
+"SC": {
+"continent": "AF",
+"en": "Seychelles",
+"pl": "Seszele"
+},
+"SD": {
+"continent": "AF",
+"en": "Sudan",
+"pl": "Sudan"
+},
+"SE": {
+"continent": "EU",
+"en": "Sweden",
+"pl": "Szwecja"
+},
+"SG": {
+"continent": "AS",
+"en": "Singapore",
+"pl": "Singapur"
+},
+"SH": {
+"continent": "AF",
+"en": "Saint Helena, Ascension and Tristan da Cunha",
+"pl": "Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha"
+},
+"SI": {
+"continent": "EU",
+"en": "Slovenia",
+"pl": "Słowenia"
+},
+"SJ": {
+"continent": "EU",
+"en": "Svalbard and Jan Mayen",
+"pl": "Svalbard i Jan Mayen"
+},
+"SK": {
+"continent": "EU",
+"en": "Slovakia",
+"pl": "Słowacja"
+},
+"SL": {
+"continent": "AF",
+"en": "Sierra Leone",
+"pl": "Sierra Leone"
+},
+"SM": {
+"continent": "EU",
+"en": "San Marino",
+"pl": "San Marino"
+},
+"SN": {
+"continent": "AF",
+"en": "Senegal",
+"pl": "Senegal"
+},
+"SO": {
+"continent": "AF",
+"en": "Somalia",
+"pl": "Somalia"
+},
+"SR": {
+"continent": "SA",
+"en": "Suriname",
+"pl": "Surinam"
+},
+"SS": {
+"continent": "AF",
+"en": "South Sudan",
+"pl": "Sudan Południowy"
+},
+"ST": {
+"continent": "AF",
+"en": "São Tomé and Príncipe",
+"pl": "Wyspy Świętego Tomasza i Książęca"
+},
+"SU": {
+"continent": "EU",
+"en": "Soviet Union",
+"pl": "Związek Socjalistycznych Republik Radzieckich"
+},
+"SV": {
+"continent": "NA",
+"en": "El Salvador",
+"pl": "Salwador"
+},
+"SX": {
+"continent": "NA",
+"en": "Sint Maarten",
+"pl": "Sint Maarten"
+},
+"SY": {
+"continent": "AS",
+"en": "Syria",
+"pl": "Syria"
+},
+"SZ": {
+"continent": "AF",
+"en": "Eswatini",
+"pl": "Eswatini"
+},
+"TA": {
+"continent": "AF",
+"en": "Tristan da Cunha",
+"pl": "Tristan da Cunha"
+},
+"TC": {
+"continent": "NA",
+"en": "Turks and Caicos Islands",
+"pl": "Turks i Caicos"
+},
+"TD": {
+"continent": "AF",
+"en": "Chad",
+"pl": "Czad"
+},
+"TF": {
+"continent": "AF",
+"en": "French Southern and Antarctic Lands",
+"pl": "Francuskie Terytoria Południowe i Antarktyczne"
+},
+"TG": {
+"continent": "AF",
+"en": "Togo",
+"pl": "Togo"
+},
+"TH": {
+"continent": "AS",
+"en": "Thailand",
+"pl": "Tajlandia"
+},
+"TJ": {
+"continent": "AS",
+"en": "Tajikistan",
+"pl": "Tadżykistan"
+},
+"TK": {
+"continent": "OC",
+"en": "Tokelau",
+"pl": "Tokelau"
+},
+"TL": {
+"continent": "AS",
+"en": "Timor-Leste",
+"pl": "Timor Wschodni"
+},
+"TM": {
+"continent": "AS",
+"en": "Turkmenistan",
+"pl": "Turkmenistan"
+},
+"TN": {
+"continent": "AF",
+"en": "Tunisia",
+"pl": "Tunezja"
+},
+"TO": {
+"continent": "OC",
+"en": "Tonga",
+"pl": "Tonga"
+},
+"TR": {
+"continent": "EU",
+"en": "Turkey",
+"pl": "Turcja"
+},
+"TT": {
+"continent": "NA",
+"en": "Trinidad and Tobago",
+"pl": "Trynidad i Tobago"
+},
+"TV": {
+"continent": "OC",
+"en": "Tuvalu",
+"pl": "Tuvalu"
+},
+"TW": {
+"continent": "AS",
+"en": "Taiwan",
+"pl": "Republika Chińska"
+},
+"TZ": {
+"continent": "AF",
+"en": "Tanzania",
+"pl": "Tanzania"
+},
+"UA": {
+"continent": "EU",
+"en": "Ukraine",
+"pl": "Ukraina"
+},
+"UG": {
+"continent": "AF",
+"en": "Uganda",
+"pl": "Uganda"
+},
+"UM": {
+"continent": "NA",
+"en": "United States Minor Outlying Islands",
+"pl": "Dalekie Wyspy Mniejsze Stanów Zjednoczonych"
+},
+"US": {
+"continent": "NA",
+"en": "United States",
+"pl": "Stany Zjednoczone"
+},
+"UY": {
+"continent": "SA",
+"en": "Uruguay",
+"pl": "Urugwaj"
+},
+"UZ": {
+"continent": "AS",
+"en": "Uzbekistan",
+"pl": "Uzbekistan"
+},
+"VA": {
+"continent": "EU",
+"en": "Vatican City",
+"pl": "Watykan"
+},
+"VC": {
+"continent": "NA",
+"en": "Saint Vincent and the Grenadines",
+"pl": "Saint Vincent i Grenadyny"
+},
+"VE": {
+"continent": "SA",
+"en": "Venezuela",
+"pl": "Wenezuela"
+},
+"VG": {
+"continent": "NA",
+"en": "British Virgin Islands",
+"pl": "Brytyjskie Wyspy Dziewicze"
+},
+"VI": {
+"continent": "NA",
+"en": "United States Virgin Islands",
+"pl": "Wyspy Dziewicze Stanów Zjednoczonych"
+},
+"VN": {
+"continent": "AS",
+"en": "Vietnam",
+"pl": "Wietnam"
+},
+"VU": {
+"continent": "OC",
+"en": "Vanuatu",
+"pl": "Vanuatu"
+},
+"WF": {
+"continent": "OC",
+"en": "Wallis and Futuna",
+"pl": "Wallis i Futuna"
+},
+"WS": {
+"continent": "OC",
+"en": "Samoa",
+"pl": "Samoa"
+},
+"XK": {
+"continent": "EU",
+"en": "Kosovo",
+"pl": "Kosowo"
+},
+"YE": {
+"continent": "AS",
+"en": "Yemen",
+"pl": "Jemen"
+},
+"YT": {
+"continent": "AF",
+"en": "Mayotte",
+"pl": "Majotta"
+},
+"YU": {
+"continent": "EU",
+"en": "Yugoslavia",
+"pl": "Jugosławia"
+},
+"ZA": {
+"continent": "AF",
+"en": "South Africa",
+"pl": "Południowa Afryka"
+},
+"ZM": {
+"continent": "AF",
+"en": "Zambia",
+"pl": "Zambia"
+},
+"ZW": {
+"continent": "AF",
+"en": "Zimbabwe",
+"pl": "Zimbabwe"
+}
+}

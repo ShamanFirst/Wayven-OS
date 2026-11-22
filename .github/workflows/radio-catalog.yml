@@ -1,0 +1,74 @@
+# Builds the internet radio station list every week and publishes it in the "radio-catalog"
+# pre-release (a pre-release, so "latest" keeps pointing at the system releases).
+#
+# Sources: Radio Browser (radio-browser.info) and Wikidata (CC0). The list is deduplicated,
+# limited to formats the device plays (MP3, Ogg, FLAC) and signed with the catalogue key, which
+# lives only in the RADIO_CATALOG_KEY secret and on the developer's machine. Devices accept only a
+# list whose manifest carries a valid signature.
+name: Lista stacji radia internetowego
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"      # every Monday, 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: radio-catalog
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Zbuduj i podpisz listę
+        env:
+          RADIO_CATALOG_KEY: ${{ secrets.RADIO_CATALOG_KEY }}
+        run: |
+          set -eu
+          umask 077
+          key="$RUNNER_TEMP/radio-key.pem"
+          printf '%s\n' "$RADIO_CATALOG_KEY" > "$key"
+          python3 tools/radio/build_catalog.py --out dist --key "$key"
+          rm -f "$key"
+          # The signature must check against the public key the devices carry.
+          openssl dgst -sha256 -verify tools/radio/radio-catalog-key.pub.pem \
+            -signature dist/radio-manifest.sig dist/radio-manifest.json
+
+      - name: Opublikuj
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          tag=radio-catalog
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --prerelease --title "Lista stacji radia internetowego" \
+              --notes "Lista stacji dla modułu Radio internetowe w Wayven OS. Budowana co tydzień z Radio Browser i Wikidata (CC0), bez duplikatów. Urządzenie pobiera ją samo (Ustawienia > Radio internetowe)."
+          fi
+          bin=$(python3 -c "import json;print(json.load(open('dist/radio-manifest.json'))['file'])")
+          # The new list first, the manifest that points at it last: a device never sees a
+          # manifest whose file is missing.
+          gh release upload "$tag" "dist/$bin" --clobber
+          gh release upload "$tag" dist/radio-manifest.json dist/radio-manifest.sig dist/radio-stats.json --clobber
+          # Keep the two newest lists, delete older ones.
+          gh release view "$tag" --json assets -q '.assets[].name' | grep '^radio-catalog-.*\.bin$' | sort -r \
+            | tail -n +3 | while read -r old; do gh release delete-asset "$tag" "$old" -y; done
+
+      - name: Zapisz statystyki w repozytorium
+        run: |
+          set -eu
+          # A weekly commit also keeps GitHub from pausing this schedule (it stops jobs in
+          # repositories without activity for 60 days).
+          mkdir -p radio
+          cp dist/radio-stats.json radio/stats.json
+          python3 -c "import json;m=json.load(open('dist/radio-manifest.json'));json.dump({k:m[k] for k in ('version','date','stations','countries','size','sha256')},open('radio/latest.json','w'),indent=1)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add radio/stats.json radio/latest.json
+          git diff --cached --quiet || git commit -m "Lista stacji $(date -u +%Y-%m-%d)"
+          git push
