@@ -183,25 +183,28 @@ def rb_servers():
     except Exception as exc:  # noqa: BLE001 - any failure: fall back to the known names
         log("server list failed: %s" % exc)
         names = []
-    if not names:
-        names = ["de1.api.radio-browser.info", "de2.api.radio-browser.info", "fi1.api.radio-browser.info"]
+    # The list sometimes names a single server; the known ones are always tried too.
+    names = sorted(set(names) | {"de1.api.radio-browser.info", "de2.api.radio-browser.info",
+                                 "fi1.api.radio-browser.info"})
     random.shuffle(names)
     return names
 
 
 def fetch_radio_browser():
     last = None
-    for server in rb_servers():
-        url = "https://%s/json/stations?hidebroken=true&limit=200000" % server
-        try:
-            log("Radio Browser: %s" % url)
-            data = json.loads(http_get(url))
-            if len(data) > 10000:
-                return data
-            last = "only %d stations" % len(data)
-        except Exception as exc:  # noqa: BLE001
-            last = exc
-        log("  failed: %s" % last)
+    for attempt in range(3):
+        for server in rb_servers():
+            url = "https://%s/json/stations?hidebroken=true&limit=200000" % server
+            try:
+                log("Radio Browser: %s" % url)
+                data = json.loads(http_get(url))
+                if len(data) > 10000:
+                    return data
+                last = "only %d stations" % len(data)
+            except Exception as exc:  # noqa: BLE001
+                last = exc
+            log("  failed: %s" % last)
+        time.sleep(30 * (attempt + 1))
     raise SystemExit("Radio Browser unreachable: %s" % last)
 
 
