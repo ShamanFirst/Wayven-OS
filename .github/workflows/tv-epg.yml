@@ -1,0 +1,89 @@
+# Builds the programme guide (EPG) for the internet TV every day and publishes it in the "tv-epg"
+# pre-release. The guide is collected by the iptv-org EPG grabber (github.com/iptv-org/epg) from
+# the guide sites it supports, for the channels of the TV catalogue that answered at the last
+# check, and cut down to titles from one hour ago to 36 hours ahead. The manifest is signed with
+# the catalogue key; the grabber's step never sees that key.
+name: Program TV dla telewizji internetowej
+
+on:
+  schedule:
+    - cron: "20 2 * * *"       # every day, 02:20 UTC
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Najwyżej tyle kanałów (0 = wszystkie)"
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tv-epg
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: iptv-org/epg
+          path: epg
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Lista kanałów do pobrania
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          mkdir -p work
+          gh release download tv-catalog -p 'iptv-catalog-*.json.gz' -D work --clobber
+          cat=$(ls work/iptv-catalog-*.json.gz | sort | tail -n 1)
+          curl -sfL https://iptv-org.github.io/api/guides.json -o work/guides.json
+          python3 tools/iptv/build_epg.py channels --catalog "$cat" --guides work/guides.json \
+            --out work/channels.xml --limit "${{ github.event.inputs.limit || 0 }}"
+
+      - name: Pobierz program (iptv-org/epg)
+        run: |
+          set -eu
+          cd epg
+          npm ci --no-audit --no-fund
+          # Sites that fail or are slow do not stop the rest; the run is capped below the job limit.
+          timeout 290m npm run grab --- --channels=../work/channels.xml --output=../work/guide.xml \
+            --days=2 --maxConnections=20 --timeout=15000 || echo "grab ended with status $?"
+          ls -la ../work/guide.xml
+
+      - name: Spakuj i podpisz
+        env:
+          RADIO_CATALOG_KEY: ${{ secrets.RADIO_CATALOG_KEY }}
+        run: |
+          set -eu
+          umask 077
+          key="$RUNNER_TEMP/catalog-key.pem"
+          printf '%s\n' "$RADIO_CATALOG_KEY" > "$key"
+          python3 tools/iptv/build_epg.py pack --guide work/guide.xml --out dist --key "$key"
+          rm -f "$key"
+          openssl dgst -sha256 -verify tools/iptv/catalog-key.pub.pem \
+            -signature dist/tv-epg-manifest.sig dist/tv-epg-manifest.json
+
+      - name: Opublikuj
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          tag=tv-epg
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --prerelease --title "Program TV dla telewizji internetowej" \
+              --notes "Program TV dla modułu TV internetowa w Wayven OS, budowany codziennie narzędziem iptv-org/epg. Urządzenie pobiera go samo."
+          fi
+          file=$(python3 -c "import json;print(json.load(open('dist/tv-epg-manifest.json'))['file'])")
+          gh release upload "$tag" "dist/$file" --clobber
+          gh release upload "$tag" dist/tv-epg-manifest.json dist/tv-epg-manifest.sig --clobber
+          gh release view "$tag" --json assets -q '.assets[].name' | grep '^tv-epg-.*\.json\.gz$' | sort -r \
+            | tail -n +3 | while read -r old; do gh release delete-asset "$tag" "$old" -y; done
