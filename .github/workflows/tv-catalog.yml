@@ -67,7 +67,7 @@ jobs:
           python3 -c "import json;m=json.load(open('dist/iptv-manifest.json'));json.dump({k:m[k] for k in ('version','date','channels','countries','size','sha256')},open('tv/latest.json','w'),indent=1)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
           git add tv/stats.json tv/latest.json
           git diff --cached --quiet || git commit -m "Lista kanałów TV $(date -u +%Y-%m-%d)"
+          git pull --rebase
           git push

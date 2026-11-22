@@ -83,7 +83,7 @@ jobs:
           python3 -c "import json;m=json.load(open('dist/radio-manifest.json'));json.dump({k:m[k] for k in ('version','date','stations','countries','size','sha256')},open('radio/latest.json','w'),indent=1)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
           git add radio/stats.json radio/latest.json
           git diff --cached --quiet || git commit -m "Lista stacji $(date -u +%Y-%m-%d)"
+          git pull --rebase
           git push
