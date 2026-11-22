@@ -38,10 +38,16 @@ jobs:
           font_args=""
           [ -f fonts/intl-font.json ] && font_args="--font-json fonts/intl-font.json"
           python3 tools/radio/build_catalog.py --out dist --key "$key" $font_args
+          # Second list for systems 0.7 and later: AAC (libxaac on the device) and HLS stations too.
+          # Its own file names, so older systems keep getting the list they can play.
+          python3 tools/radio/build_catalog.py --out dist --key "$key" $font_args --aac --hls --suffix=-aac \
+            --wd-json dist/wikidata-streams.json
           rm -f "$key"
-          # The signature must check against the public key the devices carry.
-          openssl dgst -sha256 -verify tools/radio/radio-catalog-key.pub.pem \
-            -signature dist/radio-manifest.sig dist/radio-manifest.json
+          # The signatures must check against the public key the devices carry.
+          for m in radio-manifest radio-manifest-aac; do
+            openssl dgst -sha256 -verify tools/radio/radio-catalog-key.pub.pem \
+              -signature dist/$m.sig dist/$m.json
+          done
 
       - name: Opublikuj
         env:
@@ -53,14 +59,19 @@ jobs:
             gh release create "$tag" --prerelease --title "Lista stacji radia internetowego" \
               --notes "Lista stacji dla modułu Radio internetowe w Wayven OS. Budowana co tydzień z Radio Browser i Wikidata (CC0), bez duplikatów. Urządzenie pobiera ją samo (Ustawienia > Radio internetowe)."
           fi
-          bin=$(python3 -c "import json;print(json.load(open('dist/radio-manifest.json'))['file'])")
-          # The new list first, the manifest that points at it last: a device never sees a
-          # manifest whose file is missing.
-          gh release upload "$tag" "dist/$bin" --clobber
-          gh release upload "$tag" dist/radio-manifest.json dist/radio-manifest.sig dist/radio-stats.json --clobber
-          # Keep the two newest lists, delete older ones.
-          gh release view "$tag" --json assets -q '.assets[].name' | grep '^radio-catalog-.*\.bin$' | sort -r \
-            | tail -n +3 | while read -r old; do gh release delete-asset "$tag" "$old" -y; done
+          for sfx in "" "-aac"; do
+            bin=$(python3 -c "import json;print(json.load(open('dist/radio-manifest$sfx.json'))['file'])")
+            # The new list first, the manifest that points at it last: a device never sees a
+            # manifest whose file is missing.
+            gh release upload "$tag" "dist/$bin" --clobber
+            gh release upload "$tag" "dist/radio-manifest$sfx.json" "dist/radio-manifest$sfx.sig" \
+              "dist/radio-stats$sfx.json" --clobber
+          done
+          # Keep the two newest lists of each kind, delete older ones.
+          for pat in '^radio-catalog-[0-9].*\.bin$' '^radio-catalog-aac-.*\.bin$'; do
+            gh release view "$tag" --json assets -q '.assets[].name' | grep "$pat" | sort -r \
+              | tail -n +3 | while read -r old; do gh release delete-asset "$tag" "$old" -y; done
+          done
 
       - name: Zapisz statystyki w repozytorium
         run: |

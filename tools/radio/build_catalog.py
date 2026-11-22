@@ -57,8 +57,8 @@ MAX_URL = 200                # the record stores lengths in one byte
 MAX_NAME_BYTES = 64
 MAX_STATE_BYTES = 40
 
-CODEC_MP3, CODEC_OGG, CODEC_FLAC, CODEC_AAC = 1, 2, 3, 4
-CODEC_NAMES = {CODEC_MP3: "MP3", CODEC_OGG: "OGG", CODEC_FLAC: "FLAC", CODEC_AAC: "AAC"}
+CODEC_MP3, CODEC_OGG, CODEC_FLAC, CODEC_AAC, CODEC_HLS = 1, 2, 3, 4, 5
+CODEC_NAMES = {CODEC_MP3: "MP3", CODEC_OGG: "OGG", CODEC_FLAC: "FLAC", CODEC_AAC: "AAC", CODEC_HLS: "HLS"}
 RB_CODECS = {"MP3": CODEC_MP3, "OGG": CODEC_OGG, "FLAC": CODEC_FLAC, "AAC": CODEC_AAC, "AAC+": CODEC_AAC}
 
 CONTINENTS = ["EU", "AS", "AF", "NA", "SA", "OC", "AN", "WW"]   # WW: stations without a country
@@ -418,7 +418,7 @@ def popularity(entry):
     return entry.get("clickcount", 0) + 0.05 * entry.get("votes", 0) + 0.2 * max(entry.get("clicktrend", 0), 0)
 
 
-def build(rb, wd, countries, allow_aac, probe_workers=24):
+def build(rb, wd, countries, allow_aac, probe_workers=24, allow_hls=False):
     stats = {"rb_input": len(rb), "wd_input": len(wd)}
     allowed = {CODEC_MP3, CODEC_OGG, CODEC_FLAC} | ({CODEC_AAC} if allow_aac else set())
     entries = []
@@ -429,15 +429,19 @@ def build(rb, wd, countries, allow_aac, probe_workers=24):
         if codec == CODEC_AAC and not allow_aac:
             dropped["aac"] += 1
             continue
-        if codec not in allowed:
+        url = (s.get("url_resolved") or s.get("url") or "").strip()
+        hls = bool(s.get("hls")) or url.lower().split("?")[0].endswith(".m3u8")
+        if hls:
+            # HLS (playlists of segments, AAC or MP3 inside): played by firmware 0.7 and later.
+            if not allow_hls:
+                dropped["hls"] += 1
+                continue
+            codec = CODEC_HLS
+        elif codec not in allowed:
             dropped["codec"] += 1
             continue
-        if s.get("hls"):
-            dropped["hls"] += 1
-            continue
-        url = (s.get("url_resolved") or s.get("url") or "").strip()
-        if not re.match(r"^https?://[^\s]+$", url) or len(url) > MAX_URL or url.lower().split("?")[0].endswith(
-                (".m3u8", ".m3u", ".pls", ".asx", ".xspf")):
+        if not re.match(r"^https?://[^\s]+$", url) or len(url) > MAX_URL or (not hls and url.lower().split("?")[0].endswith(
+                (".m3u8", ".m3u", ".pls", ".asx", ".xspf"))):
             dropped["url"] += 1
             continue
         if url.startswith("https://") and s.get("ssl_error"):
@@ -715,6 +719,8 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--key", help="ECDSA P-256 private key (PEM) for the manifest signature")
     ap.add_argument("--aac", action="store_true", help="include AAC streams (needs an AAC patent licence)")
+    ap.add_argument("--hls", action="store_true", help="include HLS streams (firmware 0.7 and later)")
+    ap.add_argument("--suffix", default="", help="added to the file names, e.g. -aac for the list of newer firmware")
     ap.add_argument("--rb-json", help="use this Radio Browser station list instead of downloading it")
     ap.add_argument("--wd-json", help="use this Wikidata list (from a previous build) instead of the query")
     ap.add_argument("--no-probe", action="store_true", help="do not check Wikidata-only streams")
@@ -734,7 +740,7 @@ def main():
     if args.no_probe:
         wd = [w for w in wd if False]  # noqa: C416 - keep the type, drop the entries
 
-    stations, stats = build(rb, wd, countries, args.aac)
+    stations, stats = build(rb, wd, countries, args.aac, allow_hls=args.hls)
     now = datetime.datetime.now(datetime.timezone.utc)
     cap = MAX_PER_COUNTRY
     while True:
@@ -750,7 +756,7 @@ def main():
     # Hour and minute too: a second build on the same day must count as newer on the device
     # (which keeps at most 15 characters of the version).
     version = now.strftime("%Y.%m.%d.%H%M")
-    bin_name = "radio-catalog-%s.bin" % version
+    bin_name = "radio-catalog%s-%s.bin" % (args.suffix, version)
     bin_path = os.path.join(args.out, bin_name)
     with open(bin_path, "wb") as f:
         f.write(blob)
@@ -771,13 +777,13 @@ def main():
         with open(args.font_json, encoding="utf-8") as f:
             font = json.load(f)
         manifest["font"] = {k: font[k] for k in ("file", "size", "sha256", "version")}
-    man_path = os.path.join(args.out, "radio-manifest.json")
+    man_path = os.path.join(args.out, "radio-manifest%s.json" % args.suffix)
     with open(man_path, "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=1)
     if args.key:
         sign(man_path, args.key)
     stats.update({"stations_written": total, "countries": ncountry, "bytes": len(blob)})
-    with open(os.path.join(args.out, "radio-stats.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(args.out, "radio-stats%s.json" % args.suffix), "w", encoding="utf-8") as f:
         json.dump(stats, f, ensure_ascii=False, indent=1)
     log(json.dumps(stats, ensure_ascii=False, indent=1))
 
