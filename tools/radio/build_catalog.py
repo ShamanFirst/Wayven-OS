@@ -92,7 +92,7 @@ GENRE_INDEX = {key: i for i, (key, _) in enumerate(GENRES)}
 # Phrase -> genres. Longer phrases are tried first, so "classic rock" never reads as "classical".
 TAG_RULES = {
     "classic rock": ["rock", "oldies"], "classic hits": ["oldies"], "classical": ["classical"],
-    "classic": ["classical"], "klassik": ["classical"], "opera": ["classical"], "baroque": ["classical"],
+    "classic": ["oldies"], "klassik": ["classical"], "opera": ["classical"], "baroque": ["classical"],
     "symphon": ["classical"], "orchestra": ["classical"], "muzyka klasyczna": ["classical"],
     "pop": ["pop"], "top 40": ["pop"], "top40": ["pop"], "hits": ["pop"], "charts": ["pop"],
     "adult contemporary": ["pop"], "hot ac": ["pop"], "contemporary": ["pop"],
