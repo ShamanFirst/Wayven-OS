@@ -738,13 +738,16 @@ def main():
     decode_check(blob)
     # A new name for each version: the old file stays downloadable until the new manifest is up,
     # so a device never pairs a manifest with the wrong file.
-    bin_name = "radio-catalog-%s.bin" % now.strftime("%Y.%m.%d")
+    # Hour and minute too: a second build on the same day must count as newer on the device
+    # (which keeps at most 15 characters of the version).
+    version = now.strftime("%Y.%m.%d.%H%M")
+    bin_name = "radio-catalog-%s.bin" % version
     bin_path = os.path.join(args.out, bin_name)
     with open(bin_path, "wb") as f:
         f.write(blob)
     manifest = {
         "format": FORMAT,
-        "version": now.strftime("%Y.%m.%d"),
+        "version": version,
         "date": now.strftime("%Y-%m-%d"),
         "built": int(now.timestamp()),
         "stations": total,
