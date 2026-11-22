@@ -1,0 +1,73 @@
+# Builds the internet TV channel list every week and publishes it in the "tv-catalog"
+# pre-release (a pre-release, so "latest" keeps pointing at the system releases).
+#
+# Sources: iptv-org (Unlicense) and Wikidata (CC0). Adult channels are left out, every stream
+# address is checked once, and the manifest is signed with the catalogue key, which lives only in
+# the RADIO_CATALOG_KEY secret and on the developer's machine. Devices accept only a list whose
+# manifest carries a valid signature.
+name: Lista kanałów telewizji internetowej
+
+on:
+  schedule:
+    - cron: "47 3 * * 1"      # every Monday, 03:47 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tv-catalog
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Zbuduj i podpisz listę
+        env:
+          RADIO_CATALOG_KEY: ${{ secrets.RADIO_CATALOG_KEY }}
+        run: |
+          set -eu
+          umask 077
+          key="$RUNNER_TEMP/catalog-key.pem"
+          printf '%s\n' "$RADIO_CATALOG_KEY" > "$key"
+          python3 tools/iptv/build_catalog.py --out dist --key "$key"
+          rm -f "$key"
+          # The signature must check against the public key the devices carry.
+          openssl dgst -sha256 -verify tools/iptv/catalog-key.pub.pem \
+            -signature dist/iptv-manifest.sig dist/iptv-manifest.json
+
+      - name: Opublikuj
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          tag=tv-catalog
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --prerelease --title "Lista kanałów telewizji internetowej" \
+              --notes "Lista kanałów dla modułu TV internetowa w Wayven OS. Budowana co tydzień z iptv-org i Wikidata (CC0), bez kanałów dla dorosłych. Urządzenie pobiera ją samo (Ustawienia > TV internetowa)."
+          fi
+          file=$(python3 -c "import json;print(json.load(open('dist/iptv-manifest.json'))['file'])")
+          # The new list first, the manifest that points at it last: a device never sees a
+          # manifest whose file is missing.
+          gh release upload "$tag" "dist/$file" --clobber
+          gh release upload "$tag" dist/iptv-manifest.json dist/iptv-manifest.sig dist/iptv-stats.json --clobber
+          # Keep the two newest lists, delete older ones.
+          gh release view "$tag" --json assets -q '.assets[].name' | grep '^iptv-catalog-.*\.json\.gz$' | sort -r \
+            | tail -n +3 | while read -r old; do gh release delete-asset "$tag" "$old" -y; done
+
+      - name: Zapisz statystyki w repozytorium
+        run: |
+          set -eu
+          mkdir -p tv
+          cp dist/iptv-stats.json tv/stats.json
+          python3 -c "import json;m=json.load(open('dist/iptv-manifest.json'));json.dump({k:m[k] for k in ('version','date','channels','countries','size','sha256')},open('tv/latest.json','w'),indent=1)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
+          git add tv/stats.json tv/latest.json
+          git diff --cached --quiet || git commit -m "Lista kanałów TV $(date -u +%Y-%m-%d)"
+          git push
