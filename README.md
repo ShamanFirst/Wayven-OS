@@ -15,9 +15,9 @@
 
 ## Co to jest
 
-**Wayven** to kompaktowe radio na trudne czasy: łączność tekstowa LoRa, mapy offline, GPS, telewizja naziemna i odbiornik radiowy w jednej obudowie z dotykowym ekranem.
+**Wayven** to kompaktowe radio na trudne czasy: łączność tekstowa LoRa, mapy offline, GPS, telewizja naziemna i internetowa, radio internetowe i odbiornik radiowy w jednej obudowie z dotykowym ekranem.
 
-To repozytorium przechowuje **gotowe paczki systemu**. Urządzenie samo je stąd pobiera i instaluje. Nie ma tu kodu źródłowego, są tylko wydania.
+To repozytorium przechowuje **gotowe paczki systemu** oraz cotygodniowe **listy stacji radiowych i kanałów TV** (przedwydania `radio-catalog` i `tv-catalog`). Urządzenie samo je stąd pobiera i instaluje.
 
 ## Jak zaktualizować urządzenie
 
@@ -38,7 +38,7 @@ Na ekranie widać pasek postępu, przewidywany czas do końca i listę zmian. **
 | `manifest.json` | numer wersji, lista zmian, rozmiary i sumy kontrolne plików |
 | `manifest.sig` | podpis cyfrowy opisu wydania |
 | `wayven-p4-<wersja>.bin` | system ekranu (ESP32-P4) |
-| `wayven-cm5-<wersja>.tar.gz` | usługi komputera pokładowego (Raspberry Pi CM5): mapy, telewizja |
+| `wayven-cm5-<wersja>.tar.gz` | usługi komputera pokładowego (Raspberry Pi CM5): mapy, telewizja naziemna i internetowa, SDR |
 
 ## Bezpieczeństwo aktualizacji
 
