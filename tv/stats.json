@@ -1,0 +1,21 @@
+{
+ "streams_in": 19389,
+ "channels_in": 31850,
+ "left_out": {
+  "no_channel": 2288,
+  "closed": 92,
+  "protocol": 15,
+  "unknown_channel": 169,
+  "adult_or_blocked": 3
+ },
+ "checked": 16822,
+ "working": 11821,
+ "entries": 11322,
+ "entries_working": 8496,
+ "with_wikidata": 2561,
+ "with_logo": 11021,
+ "countries": 181,
+ "bytes": 702928,
+ "bytes_raw": 4000733,
+ "version": "2026.11.22.1913"
+}
