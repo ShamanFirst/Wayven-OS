@@ -51,6 +51,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 AGENT = "WayvenCatalogBuilder/1.0 (+https://github.com/ShamanFirst/Wayven-OS)"
 FORMAT = 1
 MAX_PER_COUNTRY = 2500       # bounds the RAM one country list takes on the device
+MAX_BYTES = 1800000          # a catalogue slot on the device is 1.75 MB including a 4 kB record
 MAX_VARIANTS = 4
 MAX_URL = 200                # the record stores lengths in one byte
 MAX_NAME_BYTES = 64
@@ -623,14 +624,14 @@ def lp(text, max_len=255):
     return struct.pack("<B", len(data)) + data
 
 
-def encode(stations, countries, built, allow_aac):
+def encode(stations, countries, built, allow_aac, cap=MAX_PER_COUNTRY):
     by_cc = {}
     for s in stations:
         by_cc.setdefault(s["cc"], []).append(s)
     country_rows = []
     for cc, items in by_cc.items():
         items.sort(key=lambda s: (-s["score"], s["name"].casefold()))
-        del items[MAX_PER_COUNTRY:]
+        del items[cap:]
         if cc == NO_COUNTRY:
             name, cont = "Bez kraju (internetowe)", "WW"
         else:
@@ -717,6 +718,7 @@ def main():
     ap.add_argument("--rb-json", help="use this Radio Browser station list instead of downloading it")
     ap.add_argument("--wd-json", help="use this Wikidata list (from a previous build) instead of the query")
     ap.add_argument("--no-probe", action="store_true", help="do not check Wikidata-only streams")
+    ap.add_argument("--font-json", help="file/size/sha256/version of the fonts for other scripts, put into the manifest")
     args = ap.parse_args()
 
     with open(os.path.join(HERE, "countries.json"), encoding="utf-8") as f:
@@ -734,7 +736,14 @@ def main():
 
     stations, stats = build(rb, wd, countries, args.aac)
     now = datetime.datetime.now(datetime.timezone.utc)
-    blob, total, ncountry = encode(stations, countries, int(now.timestamp()), args.aac)
+    cap = MAX_PER_COUNTRY
+    while True:
+        # Fewer stations per country (the least popular go) if the file would not fit a slot.
+        blob, total, ncountry = encode([dict(st) for st in stations], countries, int(now.timestamp()), args.aac, cap)
+        if len(blob) <= MAX_BYTES or cap <= 300:
+            break
+        cap -= 200
+        log("catalogue %d bytes, too large: at most %d stations per country" % (len(blob), cap))
     decode_check(blob)
     # A new name for each version: the old file stays downloadable until the new manifest is up,
     # so a device never pairs a manifest with the wrong file.
@@ -758,6 +767,10 @@ def main():
         "sha256": hashlib.sha256(blob).hexdigest(),
         "sources": ["Radio Browser (radio-browser.info)", "Wikidata (CC0)"],
     }
+    if args.font_json:
+        with open(args.font_json, encoding="utf-8") as f:
+            font = json.load(f)
+        manifest["font"] = {k: font[k] for k in ("file", "size", "sha256", "version")}
     man_path = os.path.join(args.out, "radio-manifest.json")
     with open(man_path, "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=1)

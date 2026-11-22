@@ -34,7 +34,10 @@ jobs:
           umask 077
           key="$RUNNER_TEMP/radio-key.pem"
           printf '%s\n' "$RADIO_CATALOG_KEY" > "$key"
-          python3 tools/radio/build_catalog.py --out dist --key "$key"
+          # The fonts for other scripts (uploaded once, rarely changed) are named in the manifest.
+          font_args=""
+          [ -f fonts/intl-font.json ] && font_args="--font-json fonts/intl-font.json"
+          python3 tools/radio/build_catalog.py --out dist --key "$key" $font_args
           rm -f "$key"
           # The signature must check against the public key the devices carry.
           openssl dgst -sha256 -verify tools/radio/radio-catalog-key.pub.pem \
