@@ -1,8 +1,8 @@
 {
- "version": "2026.11.22",
+ "version": "2026.11.22.1321",
  "date": "2026-11-22",
  "stations": 28795,
  "countries": 218,
- "size": 1453702,
- "sha256": "3b05ea13c0f627595bc1fd958ccd976edbd2bc83421d48d90206161c0bc5634f"
+ "size": 1453700,
+ "sha256": "d7f7e27139767159279624de0af1d7cc86f98d19de4792357b073ce0763b09b5"
 }
