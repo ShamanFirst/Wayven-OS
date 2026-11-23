@@ -1,21 +1,21 @@
 {
- "rb_input": 53166,
+ "rb_input": 53242,
  "wd_input": 1227,
  "dropped": {
-  "codec": 1774,
-  "aac": 14701,
-  "hls": 52,
-  "url": 579,
+  "codec": 49,
+  "aac": 14719,
+  "hls": 1781,
+  "url": 578,
   "name": 0,
-  "tls": 291
+  "tls": 294
  },
  "wd_matched": 240,
  "wd_added": 23,
- "entries_after_filter": 35792,
- "stations": 31168,
- "variants_total": 31696,
- "multi_variant_stations": 468,
- "stations_written": 28795,
+ "entries_after_filter": 35844,
+ "stations": 31212,
+ "variants_total": 31741,
+ "multi_variant_stations": 469,
+ "stations_written": 28830,
  "countries": 218,
- "bytes": 1454185
+ "bytes": 1454430
 }
