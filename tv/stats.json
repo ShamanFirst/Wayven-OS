@@ -1,21 +1,21 @@
 {
- "streams_in": 19389,
- "channels_in": 31850,
+ "streams_in": 19385,
+ "channels_in": 31857,
  "left_out": {
-  "no_channel": 2288,
-  "closed": 92,
+  "no_channel": 2457,
+  "closed": 91,
   "protocol": 15,
-  "unknown_channel": 169,
-  "adult_or_blocked": 3
+  "adult_or_blocked": 18,
+  "unknown_channel": 2
  },
- "checked": 16822,
- "working": 11821,
- "entries": 11322,
- "entries_working": 8496,
- "with_wikidata": 2561,
- "with_logo": 11021,
+ "checked": 16802,
+ "working": 11808,
+ "entries": 11308,
+ "entries_working": 8504,
+ "with_wikidata": 2551,
+ "with_logo": 11006,
  "countries": 181,
- "bytes": 702928,
- "bytes_raw": 4000733,
- "version": "2026.11.22.1913"
+ "bytes": 702760,
+ "bytes_raw": 3997450,
+ "version": "2026.11.23.1348"
 }

@@ -1,8 +1,8 @@
 {
- "version": "2026.11.22.1913",
- "date": "2026-11-22",
- "channels": 11322,
+ "version": "2026.11.23.1348",
+ "date": "2026-11-23",
+ "channels": 11308,
  "countries": 181,
- "size": 702928,
- "sha256": "f18fafa06c8f4d36d2f70c778b534017b71edd74e0997452b49ea1cecf6c18bb"
+ "size": 702760,
+ "sha256": "69ccea4fb9dfb0eace8ab0d100a46dd1cf38059e9327f18ab23e44236d27485b"
 }
